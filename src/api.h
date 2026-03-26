@@ -1,35 +1,35 @@
 #pragma once
 
 #if defined _WIN32 || defined __CYGWIN__
-#  define NewFSMController_DLLIMPORT __declspec(dllimport)
-#  define NewFSMController_DLLEXPORT __declspec(dllexport)
-#  define NewFSMController_DLLLOCAL
+#  define PIDTuningController_DLLIMPORT __declspec(dllimport)
+#  define PIDTuningController_DLLEXPORT __declspec(dllexport)
+#  define PIDTuningController_DLLLOCAL
 #else
 // On Linux, for GCC >= 4, tag symbols using GCC extension.
 #  if __GNUC__ >= 4
-#    define NewFSMController_DLLIMPORT __attribute__((visibility("default")))
-#    define NewFSMController_DLLEXPORT __attribute__((visibility("default")))
-#    define NewFSMController_DLLLOCAL __attribute__((visibility("hidden")))
+#    define PIDTuningController_DLLIMPORT __attribute__((visibility("default")))
+#    define PIDTuningController_DLLEXPORT __attribute__((visibility("default")))
+#    define PIDTuningController_DLLLOCAL __attribute__((visibility("hidden")))
 #  else
 // Otherwise (GCC < 4 or another compiler is used), export everything.
-#    define NewFSMController_DLLIMPORT
-#    define NewFSMController_DLLEXPORT
-#    define NewFSMController_DLLLOCAL
+#    define PIDTuningController_DLLIMPORT
+#    define PIDTuningController_DLLEXPORT
+#    define PIDTuningController_DLLLOCAL
 #  endif // __GNUC__ >= 4
 #endif // defined _WIN32 || defined __CYGWIN__
 
-#ifdef NewFSMController_STATIC
+#ifdef PIDTuningController_STATIC
 // If one is using the library statically, get rid of
 // extra information.
-#  define NewFSMController_DLLAPI
-#  define NewFSMController_LOCAL
+#  define PIDTuningController_DLLAPI
+#  define PIDTuningController_LOCAL
 #else
 // Depending on whether one is building or using the
 // library define DLLAPI to import or export.
-#  ifdef NewFSMController_EXPORTS
-#    define NewFSMController_DLLAPI NewFSMController_DLLEXPORT
+#  ifdef PIDTuningController_EXPORTS
+#    define PIDTuningController_DLLAPI PIDTuningController_DLLEXPORT
 #  else
-#    define NewFSMController_DLLAPI NewFSMController_DLLIMPORT
-#  endif // NewFSMController_EXPORTS
-#  define NewFSMController_LOCAL NewFSMController_DLLLOCAL
-#endif // NewFSMController_STATIC
+#    define PIDTuningController_DLLAPI PIDTuningController_DLLIMPORT
+#  endif // PIDTuningController_EXPORTS
+#  define PIDTuningController_LOCAL PIDTuningController_DLLLOCAL
+#endif // PIDTuningController_STATIC
